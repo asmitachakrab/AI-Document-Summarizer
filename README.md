@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📄 SummifyAI — AI Document Summary Assistant
 
-## Getting Started
+An AI-powered web application that accepts documents (**PDFs** and **Images**), extracts text with high fidelity (using native PDF parsing or client-side OCR via Tesseract.js), and generates intelligent, structured summaries with customizable lengths, key takeaways, and document improvement recommendations.
 
-First, run the development server:
+---
 
+## 🚀 Live Demo & Repository
+- **Repository**: [GitHub](https://github.com/your-username/document-summarizer)
+- **Deployment**: Ready for instant 1-click deployment on **Vercel** or **Netlify**.
+
+---
+
+## 💡 Brief Approach Write-Up (175 words)
+
+> **Architectural Philosophy:**
+> To deliver a high-performance, cost-effective, and privacy-first solution, document processing is divided into two distinct tiers: **Client-Side Extraction** and **Server-Side AI Synthesis**.
+>
+> 1. **Client-Side Ingestion & OCR:** PDFs are parsed directly in the browser via `pdfjs-dist` to preserve formatting and eliminate server upload overhead. If a scanned PDF or image (PNG, JPG, TIFF, WEBP) is detected, `Tesseract.js` Web Workers execute client-side OCR without taxing server compute or running into serverless execution limits.
+> 2. **Structured AI Summarization:** Extracted text is processed via a Next.js API route backed by **Google Gemini 3.6 Flash** using schema-constrained JSON output containing the executive summary (tailored to Short, Medium, or Long presets), high-priority key points, and actionable document improvement suggestions.
+> 3. **Resilient UX:** The interface offers drag-and-drop uploads, real-time stage progress indicators, raw text inspection, single-click clipboard copying, and a built-in demo fallback mode for immediate evaluation without requiring API credentials.
+
+---
+
+## ✨ Features
+
+- 📂 **Multi-Format Document Upload**: Drag-and-drop or file picker supporting PDF, PNG, JPG, JPEG, WEBP, and TIFF (up to 20MB).
+- ⚡ **Dual-Engine Text Extraction**:
+  - **Native PDF Parsing**: High-speed text extraction preserving document structure via `pdfjs-dist`.
+  - **Client-Side OCR**: Robust text recognition for scanned images and flat PDFs using `Tesseract.js`.
+- 🧠 **AI Summary Generation**:
+  - Powered by **Google Gemini 3.6 Flash** (generous free tier & 1M token context window).
+  - **Configurable Lengths**: *Short* (2-3 sentences), *Medium* (1 paragraph), and *Long* (multi-paragraph detailed).
+  - **Key Points Extraction**: Instant bulleted takeaways highlighting core messages.
+  - **Improvement Suggestions**: Actionable recommendations on clarity, structure, and formatting.
+- 🎨 **Modern & Responsive UI**: Clean, mobile-friendly interface built with Tailwind CSS, Lucide icons, step indicators, and loading states.
+- 🛡️ **Zero-Config Demo Mode**: Includes a frequency-scored extractive fallback summarizer so the app functions immediately out-of-the-box even before adding an API key (clearly labeled in the UI).
+
+---
+
+## 🛠️ Tech Stack
+
+| Component | Technology |
+| :--- | :--- |
+| **Framework** | Next.js 16 (App Router, React 19, TypeScript) |
+| **Styling** | Tailwind CSS v4 + Lucide React Icons |
+| **PDF Extraction** | `pdfjs-dist` (Client-side Web Worker) |
+| **OCR Engine** | `Tesseract.js` (Client-side Web Worker) |
+| **AI Summarization** | Google Gemini API (`gemini-3.6-flash`) |
+| **Deployment** | Vercel / Netlify (Serverless & Edge Ready) |
+
+---
+
+## 🏁 Getting Started
+
+### 1. Prerequisites
+- Node.js 18+ installed on your machine
+- (Optional) A free Google Gemini API key from [Google AI Studio](https://aistudio.google.com/)
+
+### 2. Clone and Install
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/document-summarizer.git
+cd document-summarizer
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Environment Configuration
+Create a `.env.local` file in the root directory:
+```bash
+cp .env.example .env.local
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Add your Gemini API key:
+```env
+GEMINI_API_KEY=your_actual_gemini_api_key_here
+```
+*(Note: If no API key is provided, the application seamlessly runs in Demo Mode for evaluation.)*
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Run Locally
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🧪 Verification & Testing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To verify the production build and type safety:
+```bash
+# Type check
+npx tsc --noEmit
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Production build
+npm run build
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🌐 Deployment Guide (Vercel)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push your repository to GitHub.
+2. Import the repository into [Vercel](https://vercel.com).
+3. Set the `GEMINI_API_KEY` in your Vercel Project Settings under **Environment Variables**.
+4. Click **Deploy**. Vercel will automatically build and publish the application.
+
+---
+
+## 📄 License
+MIT License. Created as part of the Technical Assessment for the Software Engineering Position.
