@@ -38,31 +38,22 @@ If no API key is configured (or the Gemini call fails), the application transpar
 The following diagram illustrates the high-level system architecture, including the client-side extraction layer and the server-side summarization pipeline:
 
 ```mermaid
-flowchart TB
-    subgraph Client["Browser (Client-Side)"]
-        UI["Next.js UI<br/>React 19 + Tailwind CSS"]
-        UP["Upload Handler<br/>Validation + 20 MB limit"]
-        PDF["PDF Extractor<br/>pdfjs-dist"]
-        OCR["OCR Engine<br/>Tesseract.js Web Worker"]
-        PREV["Text Preview + Length Selector"]
+flowchart LR
+    subgraph client["Browser (Client-Side)"]
+        direction LR
+        UI["Next.js UI"] --> PDF["PDF Extractor (pdfjs-dist)"]
+        UI --> OCR["OCR Engine (Tesseract.js)"]
     end
 
-    subgraph Server["Next.js Server (Vercel)"]
-        API["API Route<br/>POST /api/summarize"]
-        SUM["Summary Service<br/>src/lib/summarizer.ts"]
-        GEM["Google Gemini API<br/>gemini-3.6-flash"]
-        EXT["Extractive Fallback<br/>Term-Frequency Engine"]
+    subgraph server["Next.js Server (Vercel)"]
+        direction LR
+        API["POST /api/summarize"] --> SUM["Summary Service"]
+        SUM --> GEM["Google Gemini API"]
+        SUM --> EXT["Extractive Fallback (Local)"]
     end
 
-    UI --> UP
-    UP --> PDF
-    UP --> OCR
-    PDF --> PREV
-    OCR --> PREV
-    PREV --> API
-    API --> SUM
-    SUM --> GEM
-    SUM --> EXT
+    PDF --> API
+    OCR --> API
 ```
 
 ---
