@@ -1,6 +1,6 @@
-# SummifyAI — AI Document Summary Assistant
+# SummifierAI — AI Document Summary Assistant
 
-SummifyAI is a full-stack web application that accepts documents (PDF and image files), extracts text through native PDF parsing or client-side OCR, and generates intelligent, structured summaries using the Google Gemini API. The application is built with Next.js 16 (App Router), React 19, and TypeScript.
+SummifierAI is a full-stack web application that accepts documents (PDF and image files), extracts text through native PDF parsing or client-side OCR, and generates intelligent, structured summaries using the Google Gemini API. The application is built with Next.js 16 (App Router), React 19, and TypeScript.
 
 ---
 
@@ -24,7 +24,7 @@ SummifyAI is a full-stack web application that accepts documents (PDF and image 
 
 ## Overview
 
-SummifyAI processes documents through a two-tier pipeline designed for performance, cost efficiency, and privacy:
+SummifierAI processes documents through a two-tier pipeline designed for performance, cost efficiency, and privacy:
 
 - **Client-Side Extraction:** PDFs and images are processed entirely in the browser. Native PDF parsing via `pdfjs-dist` preserves document structure without server uploads, while `Tesseract.js` Web Workers perform OCR for scanned documents and images.
 - **Server-Side AI Synthesis:** Extracted text is sent to a Next.js API route, which calls the Google Gemini API with schema-constrained JSON output to produce an executive summary, key points, and document improvement suggestions.

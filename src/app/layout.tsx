@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Summarize any document within minutes | SummifyAI",
+  title: "Summarize any document within minutes | SummifierAI",
   description: "Upload any PDF or image document and get AI-powered smart summaries with key points and improvement suggestions.",
 };
 

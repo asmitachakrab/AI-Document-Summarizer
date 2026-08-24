@@ -8,7 +8,7 @@ export function Header() {
           <ScanText className="h-6 w-6" />
         </span>
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          <span className="text-slate-900">Summify</span>
+          <span className="text-slate-900">Summifier</span>
           <span className="text-violet-600">AI</span>
         </h1>
       </div>
