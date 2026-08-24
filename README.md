@@ -5,7 +5,7 @@ An AI-powered web application that accepts documents (**PDFs** and **Images**), 
 ---
 
 ## 🚀 Live Demo & Repository
-- **Repository**: [GitHub](https://github.com/your-username/document-summarizer)
+- **Repository**: [GitHub](https://github.com/asmitachakrab/AI-Document-Summarizer)
 - **Deployment**: Ready for instant 1-click deployment on **Vercel** or **Netlify**.
 
 ---
@@ -58,8 +58,8 @@ An AI-powered web application that accepts documents (**PDFs** and **Images**), 
 
 ### 2. Clone and Install
 ```bash
-git clone https://github.com/your-username/document-summarizer.git
-cd document-summarizer
+git clone https://github.com/asmitachakrab/AI-Document-Summarizer.git
+cd AI-Document-Summarizer
 npm install
 ```
 
