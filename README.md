@@ -1,5 +1,7 @@
 # SummifierAI — AI Document Summary Assistant
 
+**Live Demo:** [https://summifier-ai.vercel.app](https://summifier-ai.vercel.app) — already deployed and running.
+
 SummifierAI is a full-stack web application that accepts documents (PDF and image files), extracts text through native PDF parsing or client-side OCR, and generates intelligent, structured summaries using the Google Gemini API. The application is built with Next.js 16 (App Router), React 19, and TypeScript.
 
 ---
@@ -15,10 +17,9 @@ SummifierAI is a full-stack web application that accepts documents (PDF and imag
 7. [API Reference](#api-reference)
 8. [Environment Variables](#environment-variables)
 9. [Getting Started](#getting-started)
-10. [Deployment](#deployment)
-11. [Security & Privacy](#security--privacy)
-12. [Verification & Testing](#verification--testing)
-13. [License](#license)
+10. [Security & Privacy](#security--privacy)
+11. [Verification & Testing](#verification--testing)
+12. [License](#license)
 
 ---
 
@@ -269,27 +270,6 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
-
----
-
-## Deployment
-
-### Deploying to Vercel
-
-1. Push the repository to GitHub.
-2. Sign in to [Vercel](https://vercel.com) with your GitHub account.
-3. Click **Add New → Project** and import `AI-Document-Summarizer`.
-4. Add the environment variable `GEMINI_API_KEY` with your key under **Project Settings → Environment Variables** (enable Production, Preview, and Development).
-5. Click **Deploy**. Vercel builds and publishes the application automatically; subsequent pushes to `main` trigger redeploys.
-
-### Generic Hosting
-
-The project is a standard Next.js application and can be deployed to any Node.js serverless or container platform:
-
-```bash
-npm run build
-npm run start
-```
 
 ---
 
