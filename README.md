@@ -35,7 +35,7 @@ If no API key is configured (or the Gemini call fails), the application transpar
 
 ## Architecture
 
-### High-Level System Architecture
+The following diagram illustrates the high-level system architecture, including the client-side extraction layer and the server-side summarization pipeline:
 
 ```mermaid
 flowchart TB
@@ -63,48 +63,6 @@ flowchart TB
     API --> SUM
     SUM --> GEM
     SUM --> EXT
-```
-
-### Document Processing Pipeline
-
-```mermaid
-sequenceDiagram
-    participant U as User
-    participant C as Client (React)
-    participant E as Extractor (pdfjs-dist / Tesseract.js)
-    participant A as API Route (/api/summarize)
-    participant S as Summary Service
-    participant G as Gemini API
-
-    U->>C: Upload PDF or image
-    C->>E: Extract text
-    Note over E: Native parse, or render pages to canvas + OCR
-    E-->>C: Extracted text with live progress
-    C->>U: Show extracted-text preview + word count
-    U->>C: Select summary length, click Generate
-    C->>A: POST { text, length }
-    A->>S: generateSummary(text, length)
-    Note over A: Truncate at 100k chars (sentence boundary)
-    S->>G: Prompt with JSON response schema
-    G-->>S: Structured JSON response
-    S-->>A: SummaryResult
-    A-->>C: JSON response
-    C->>U: Render summary, key points, suggestions
-```
-
-### Text Extraction Decision Flow
-
-```mermaid
-flowchart TD
-    A["File uploaded"] --> B{File type?}
-    B -- "PDF" --> C["Native text extraction<br/>(pdfjs-dist)"]
-    C --> D{Extracted text length > 50 chars?}
-    D -- "Yes" --> F["Use extracted text"]
-    D -- "No (scanned PDF)" --> E["Render pages to canvas<br/>+ OCR (Tesseract.js)"]
-    B -- "Image (PNG/JPG/WebP/TIFF)" --> E
-    E --> F
-    F --> G["Preview text in UI"]
-    G --> H["POST /api/summarize"]
 ```
 
 ---
