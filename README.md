@@ -303,3 +303,8 @@ npm run lint
 ## License
 
 MIT License. Created as part of the technical assessment for the Software Engineering position.
+
+---
+
+Asmita Chakraborty
+<p align="left"> <a href="https://github.com/asmitachakrab"> <img src="https://img.shields.io/badge/GitHub-asmitachakrab-black?style=flat-square&logo=github"> </a> <a href="https://www.linkedin.com/in/asmita-chakraborty-4b19132a1/"> <img src="https://img.shields.io/badge/LinkedIn-Asmita%20Chakraborty-blue?style=flat-square&logo=linkedin"> </a> 
